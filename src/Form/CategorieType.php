@@ -2,6 +2,7 @@
 // src/Form/CategorieType.php
 namespace App\Form;
 
+use App\Entity\Categorie;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -13,21 +14,16 @@ class CategorieType extends AbstractType
 public function buildForm(FormBuilderInterface $builder, array $options)
 {
 $builder
-->add('titre', TextType::class, [
-'label' => 'Titre de la catégorie',
-'required' => true,
-'constraints' => [
-new \Symfony\Component\Validator\Constraints\Length(['max' => 150]),
-],
-])
-// Ajoutez d'autres champs au besoin
-->add('save', SubmitType::class, ['label' => 'Enregistrer']);
+->add('titre', TextType::class)
+->add('ordre')
+->add('submit', SubmitType::class, ['label' => 'Enregistrer'])
+;
 }
 
 public function configureOptions(OptionsResolver $resolver)
 {
 $resolver->setDefaults([
-'data_class' => 'App\Entity\Categorie',
+'data_class' => Categorie::class,
 ]);
 }
 }

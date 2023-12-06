@@ -54,3 +54,30 @@ categorie_edition:
 categorie_suppression:
     path: '/categorie/suppression/{id}'
     controller: 'App\Controller\CategorieController::suppression'
+
+# config/routes.yaml
+
+app_article_crud_index:
+    path: /article/crud/
+    controller: App\Controller\ArticleCrudController::index
+    methods: ['GET']
+
+app_article_crud_new:
+    path: /article/crud/new
+    controller: App\Controller\ArticleCrudController::new
+    methods: ['GET', 'POST']
+
+app_article_crud_show:
+    path: /article/crud/{id}
+    controller: App\Controller\ArticleCrudController::show
+    methods: ['GET']
+
+app_article_crud_edit:
+    path: /article/crud/{id}/edit
+    controller: App\Controller\ArticleCrudController::edit
+    methods: ['GET', 'POST']
+
+app_article_crud_delete:
+    path: /article/crud/{id}
+    controller: App\Controller\ArticleCrudController::delete
+    methods: ['POST']
