@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Suppression de Catégorie{% endblock %}
+
+{% block content %}
+    <h1>Suppression de Catégorie</h1>
+
+    <p>Êtes-vous sûr de vouloir supprimer cette catégorie ?</p>
+
+    <form method="post" action="{{ path('categorie_suppression', {'id': categorie.id}) }}">
+        <input type="hidden" name="_method" value="DELETE">
+        <button type="submit">Oui, Supprimer</button>
+    </form>
+
+    <a href="{{ path('liste_categories') }}">Annuler</a>
+{% endblock %}

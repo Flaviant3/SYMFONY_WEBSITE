@@ -5,21 +5,27 @@
 {% block title %}Liste des Articles{% endblock %}
 
 {% block content %}
-    <h1>Liste des Articles</h1>
-    <ul>
-        {% for article in articles %}
-            <li>
-                <strong>{{ article.titre }}</strong><br>
-                <em>Auteur: {{ article.auteur }}</em><br>
-                <em>Date de Publication: {{ article.datePublication|date('Y-m-d H:i:s') }}</em><br>
-                <p>{{ article.texte }}</p>
-                {% if article.image %}
-                    <img src="{{ article.image }}" alt="Image de l'article">
-                {% endif %}
-                {% if article.categorie %}
-                    <em>Catégorie: {{ article.categorie.titre }}</em><br>
-                {% endif %}
-            </li>
-        {% endfor %}
-    </ul>
+    <div class="article-list">
+        <h1>Liste des Articles</h1>
+        <ul>
+            {% for article in articles %}
+                <li class="article-item">
+                    <h2>{{ article.titre }}</h2>
+                    <p class="meta">
+                        <em>Auteur: {{ article.auteur }}</em> |
+                        <em>Date de Publication: {{ article.datePublication|date('Y-m-d H:i:s') }}</em>
+                    </p>
+                    <div class="article-content">
+                        <p>{{ article.texte }}</p>
+                        {% if article.image %}
+                            <img src="{{ article.image }}" alt="Image de l'article">
+                        {% endif %}
+                        {% if article.categorie %}
+                            <p class="category">Catégorie: {{ article.categorie.titre }}</p>
+                        {% endif %}
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
 {% endblock %}

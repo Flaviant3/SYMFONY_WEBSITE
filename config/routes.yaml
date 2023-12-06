@@ -36,3 +36,21 @@ contact_submit:
 categorie_list:
     path: '/categories'
     controller: 'App\Controller\CategorieTestController::create'
+
+categorie_nouveau:
+    path: '/categorie/nouveau'
+    controller: 'App\Controller\CategorieController::nouveau'
+    methods: ['GET', 'POST']
+
+liste_categories:
+    path: '/categorie/liste'
+    controller: 'App\Controller\CategorieController::liste'
+    methods: ['GET']
+
+categorie_edition:
+    path: '/categorie/edition/{id}'
+    controller: 'App\Controller\CategorieController::edition'
+
+categorie_suppression:
+    path: '/categorie/suppression/{id}'
+    controller: 'App\Controller\CategorieController::suppression'

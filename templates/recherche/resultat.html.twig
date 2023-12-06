@@ -5,7 +5,68 @@
 {% block title %}Résultats de la Recherche{% endblock %}
 
 {% block content %}
-    <h1>Résultats de la Recherche</h1>
+    <style>
+        /* public/css/resultat.css */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+            color: #343a40;
+        }
+
+        .search-results {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        header {
+            background-color: #007bff;
+            padding: 20px;
+            text-align: center;
+            color: #fff;
+            margin-bottom: 30px;
+        }
+
+        h1, h2 {
+            color: black;
+        }
+
+        .article-list {
+            display: grid;
+            gap: 20px;
+        }
+
+        .article-card {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .article-card h2 {
+            margin-bottom: 10px;
+        }
+
+        .article-card .meta {
+            color: #6c757d;
+            font-size: 0.8rem;
+        }
+
+        .article-card .content {
+            padding: 15px;
+        }
+
+        .no-results {
+            text-align: center;
+            color: #6c757d;
+            font-style: italic;
+        }
+    </style>
+
+    <header>
+        <h1>Résultats de la Recherche</h1>
+    </header>
 
     {% if searchTerm is defined %}
         <p>Vous avez recherché : {{ searchTerm }}</p>
