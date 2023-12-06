@@ -1,0 +1,15 @@
+{# templates/recherche/recherche.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Page de Recherche{% endblock %}
+
+{% block content %}
+    <h1>Page de Recherche</h1>
+
+    <form action="{{ path('recherche_resultat') }}" method="post">
+        <label for="search">Recherche :</label>
+        <input type="text" id="search" name="search" required>
+        <button type="submit">Rechercher</button>
+    </form>
+{% endblock %}

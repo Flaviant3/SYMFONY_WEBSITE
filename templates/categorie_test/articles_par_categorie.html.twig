@@ -1,0 +1,22 @@
+{# templates/categorie_test/articles_par_categorie.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Articles par Catégorie{% endblock %}
+
+{% block content %}
+    <h1>Articles de la catégorie {{ categorie.titre }}</h1>
+    <ul>
+        {% for article in articles %}
+            <li>
+                <strong>{{ article.titre }}</strong><br>
+                <em>Auteur: {{ article.auteur }}</em><br>
+                <em>Date de Publication: {{ article.datePublication|date('Y-m-d H:i:s') }}</em><br>
+                <p>{{ article.texte }}</p>
+                {% if article.image %}
+                    <img src="{{ article.image }}" alt="Image de l'article">
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

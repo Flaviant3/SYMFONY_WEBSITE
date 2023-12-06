@@ -1,0 +1,25 @@
+{# templates/article/index.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des Articles{% endblock %}
+
+{% block content %}
+    <h1>Liste des Articles</h1>
+    <ul>
+        {% for article in articles %}
+            <li>
+                <strong>{{ article.titre }}</strong><br>
+                <em>Auteur: {{ article.auteur }}</em><br>
+                <em>Date de Publication: {{ article.datePublication|date('Y-m-d H:i:s') }}</em><br>
+                <p>{{ article.texte }}</p>
+                {% if article.image %}
+                    <img src="{{ article.image }}" alt="Image de l'article">
+                {% endif %}
+                {% if article.categorie %}
+                    <em>Catégorie: {{ article.categorie.titre }}</em><br>
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

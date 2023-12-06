@@ -1,0 +1,34 @@
+{# templates/recherche/resultat.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Résultats de la Recherche{% endblock %}
+
+{% block content %}
+    <h1>Résultats de la Recherche</h1>
+
+    {% if searchTerm is defined %}
+        <p>Vous avez recherché : {{ searchTerm }}</p>
+    {% else %}
+        <p>Aucun terme de recherche spécifié.</p>
+    {% endif %}
+
+    {% if articles %}
+        <h2>Articles trouvés :</h2>
+        <ul>
+            {% for article in articles %}
+                <li>
+                    <strong>{{ article.titre }}</strong><br>
+                    <em>Auteur: {{ article.auteur }}</em><br>
+                    <em>Date de Publication: {{ article.datePublication|date('Y-m-d H:i:s') }}</em><br>
+                    <p>{{ article.texte }}</p>
+                    {% if article.image %}
+                        <img src="{{ article.image }}" alt="Image de l'article">
+                    {% endif %}
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Aucun article trouvé.</p>
+    {% endif %}
+{% endblock %}

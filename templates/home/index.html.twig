@@ -1,0 +1,35 @@
+{# templates/home/index.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil - Mon Site{% endblock %}
+
+{% block content %}
+    <h1>Bienvenue sur la page d'accueil!</h1>
+
+    {% if latestArticle %}
+        <h2>Dernier Article</h2>
+        <p>
+            <strong>{{ latestArticle.titre }}</strong><br>
+            <em>Auteur: {{ latestArticle.auteur }}</em><br>
+            <em>Date de Publication: {{ latestArticle.datePublication|date('Y-m-d H:i:s') }}</em><br>
+        <p>{{ latestArticle.texte }}</p>
+        {% if latestArticle.image %}
+            <img src="{{ latestArticle.image }}" alt="Image de l'article">
+        {% endif %}
+        </p>
+    {% else %}
+        <p>Aucun article n'est actuellement disponible.</p>
+    {% endif %}
+
+    <h2>Liste des Catégories</h2>
+    {% if categories %}
+        <ul>
+            {% for categorie in categories %}
+                <li><a href="{{ path('articles_par_categorie', {'id': categorie.id}) }}">{{ categorie.titre }}</a></li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Aucune catégorie n'est actuellement disponible.</p>
+    {% endif %}
+{% endblock %}

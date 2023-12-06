@@ -1,0 +1,14 @@
+{# templates/categorie_test/index.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des Catégories{% endblock %}
+
+{% block content %}
+    <h1>Liste des Catégories</h1>
+    <ul>
+        {% for categorie in categories %}
+            <li><a href="{{ path('articles_par_categorie', {'id': categorie.id}) }}">{{ categorie.titre }}</a></li>
+        {% endfor %}
+    </ul>
+{% endblock %}

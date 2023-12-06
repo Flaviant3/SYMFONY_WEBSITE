@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Mon Site{% endblock %}</title>
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}" />
+    {# Vous pouvez inclure d'autres fichiers CSS ou JavaScript ici #}
+</head>
+<body>
+
+<nav>
+    <ul>
+        <li><a href="{{ path('accueil') }}">Accueil</a></li>
+        <li><a href="{{ path('contact') }}">Contact</a></li>
+        <li><a href="{{ path('articles') }}">Articles</a></li>
+        <li><a href="{{ path('recherche') }}">Recherche</a></li>
+    </ul>
+</nav>
+
+<div id="content">
+    {% block content %}
+        <h1>Dernier Article</h1>
+        {% if latestArticle %}
+            <h2>{{ latestArticle.titre }}</h2>
+            <p>{{ latestArticle.texte }}</p>
+            <p>{{ latestArticle.datePublication|date('Y-m-d H:i:s') }}</p>
+            <p>Auteur : {{ latestArticle.auteur }}</p>
+            <p>Image : {{ latestArticle.image }}</p>
+        {% else %}
+            <p>Aucun article trouvé.</p>
+        {% endif %}
+    {% endblock %}
+
+</div>
+
+</body>
+</html>

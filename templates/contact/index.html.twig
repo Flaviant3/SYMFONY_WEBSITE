@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Contact - Mon Site{% endblock %}
+
+{% block content %}
+    <h1>Contactez-nous!</h1>
+
+    {# Afficher les erreurs de validation du formulaire s'il y en a #}
+    {% if errors is defined and errors|length > 0 %}
+        <div class="alert alert-danger">
+            {% for error in errors %}
+                {{ error.messageKey|trans(error.messageData, 'validators') }}<br>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    {# Formulaire de contact #}
+    <form action="{{ path('contact_submit') }}" method="post">
+        {{ form_start(form) }}
+
+        {# Champ Nom #}
+        <div class="form-group">
+            {{ form_label(form.nom) }}
+            {{ form_widget(form.nom, {'attr': {'class': 'form-control'}}) }}
+        </div>
+
+        {# Champ Email #}
+        <div class="form-group">
+            {{ form_label(form.email) }}
+            {{ form_widget(form.email, {'attr': {'class': 'form-control'}}) }}
+        </div>
+
+        {# Champ Message #}
+        <div class="form-group">
+            {{ form_label(form.message) }}
+            {{ form_widget(form.message, {'attr': {'class': 'form-control'}}) }}
+        </div>
+
+        {# Bouton Soumettre #}
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">Envoyer</button>
+        </div>
+
+        {{ form_end(form) }}
+    </form>
+{% endblock %}
