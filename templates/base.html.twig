@@ -20,17 +20,7 @@
 <div id="content">
     {% block content %}
         <h1>Dernier Article</h1>
-        {% if latestArticle %}
-            <h2>{{ latestArticle.titre }}</h2>
-            <p>{{ latestArticle.texte }}</p>
-            <p>{{ latestArticle.datePublication|date('Y-m-d H:i:s') }}</p>
-            <p>Auteur : {{ latestArticle.auteur }}</p>
-            <p>Image : {{ latestArticle.image }}</p>
-        {% else %}
-            <p>Aucun article trouvé.</p>
-        {% endif %}
     {% endblock %}
-
 </div>
 
 </body>
